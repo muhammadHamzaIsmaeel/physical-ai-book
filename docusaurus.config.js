@@ -12,14 +12,14 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://muhammadhamzaismaeel.github.io',
+  url: 'https://muhammadHamzaIsmaeel.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'muhammadhamzaismaeel', // Usually your GitHub org/user name.
+  organizationName: 'muhammadHamzaIsmaeel', // Usually your GitHub org/user name.
   projectName: 'physical-ai-book', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -47,7 +47,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/muhammadhamzaismaeel/physical-ai-book/tree/main/',
+          editUrl: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/tree/main/',
         },
         blog: false, // Disable blog feature
         theme: {
@@ -76,7 +76,7 @@ const config = {
             label: 'Book',
           },
           {
-            href: 'https://github.com/muhammadhamzaismaeel/physical-ai-book',
+            href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book',
             label: 'GitHub',
             position: 'right',
           },
@@ -103,11 +103,11 @@ const config = {
             items: [
               {
                 label: 'GitHub Repository',
-                href: 'https://github.com/muhammadhamzaismaeel/physical-ai-book',
+                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book',
               },
               {
                 label: 'Code Examples',
-                href: 'https://github.com/muhammadhamzaismaeel/physical-ai-book/tree/main/code-examples',
+                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/tree/main/code-examples',
               },
             ],
           },
@@ -116,11 +116,11 @@ const config = {
             items: [
               {
                 label: 'License (MIT)',
-                href: 'https://github.com/muhammadhamzaismaeel/physical-ai-book/blob/main/LICENSE',
+                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/blob/main/LICENSE',
               },
               {
                 label: 'Content License (CC-BY-4.0)',
-                href: 'https://github.com/muhammadhamzaismaeel/physical-ai-book/blob/main/LICENSE-CONTENT',
+                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/blob/main/LICENSE-CONTENT',
               },
             ],
           },
