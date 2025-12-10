@@ -117,7 +117,7 @@ A **link** represents a part of your robot that doesn't bend or deform. Think of
   <visual>
     <origin xyz="0 0 0" rpy="0 0 0"/>  <!-- offset from link frame -->
     <geometry>
-      <box size="0.3 0.2 0.5"/>  <!-- 30cm × 20cm × 50cm -->
+      <box size="0.3 0.2 0.5"/>  <!-- 30cm ï¿½ 20cm ï¿½ 50cm -->
     </geometry>
     <material name="gray">
       <color rgba="0.5 0.5 0.5 1"/>
@@ -297,7 +297,7 @@ A **joint** defines how two links move relative to each other. Joints are the "h
 
   <!-- Joint limits -->
   <limit lower="-1.57" upper="1.57" effort="100" velocity="2.0"/>
-  <!--   -90° to +90°, 100 Nm torque, 2 rad/s max speed -->
+  <!--   -90ï¿½ to +90ï¿½, 100 Nm torque, 2 rad/s max speed -->
 
   <!-- Damping and friction (optional) -->
   <dynamics damping="0.5" friction="0.1"/>
@@ -347,7 +347,7 @@ The `<origin>` tag answers two questions:
   <child link="forearm"/>
   <origin xyz="0 0 -0.3" rpy="0 0 0"/>  <!-- 30cm down (negative z) -->
   <axis xyz="0 1 0"/>  <!-- rotate around y-axis (pitch) -->
-  <limit lower="0" upper="2.5" effort="50" velocity="2"/>  <!-- 0 to ~143° -->
+  <limit lower="0" upper="2.5" effort="50" velocity="2"/>  <!-- 0 to ~143ï¿½ -->
 </joint>
 ```
 
@@ -473,7 +473,7 @@ Let's combine everything we've learned to build a simple robot arm.
     <child link="forearm"/>
     <origin xyz="0 0 0.3" rpy="0 0 0"/>  <!-- top of upper arm -->
     <axis xyz="0 1 0"/>  <!-- pitch rotation -->
-    <limit lower="0" upper="2.5" effort="5" velocity="1.0"/>  <!-- 0 to ~143° -->
+    <limit lower="0" upper="2.5" effort="5" velocity="1.0"/>  <!-- 0 to ~143ï¿½ -->
     <dynamics damping="0.3"/>
   </joint>
 
@@ -543,8 +543,8 @@ forearm frame = (0, 0, 0.325) in world
 Forearm tip = (0, 0, 0.325 + 0.25) = (0, 0, 0.575) in world
 ```
 
-When `shoulder = 45°`:
-- Upper arm rotates 45° around y-axis
+When `shoulder = 45ï¿½`:
+- Upper arm rotates 45ï¿½ around y-axis
 - End-effector position changes based on forward kinematics
 
 **TF tree** (more in Section 3) shows these transforms in real-time.
@@ -556,9 +556,9 @@ For simulation, you need inertia values. Here are formulas for common shapes:
 ### Box (width w, depth d, height h, mass m)
 
 ```
-Ixx = (1/12) * m * (d² + h²)
-Iyy = (1/12) * m * (w² + h²)
-Izz = (1/12) * m * (w² + d²)
+Ixx = (1/12) * m * (dï¿½ + hï¿½)
+Iyy = (1/12) * m * (wï¿½ + hï¿½)
+Izz = (1/12) * m * (wï¿½ + dï¿½)
 Ixy = Ixz = Iyz = 0  (for symmetric boxes)
 ```
 
@@ -567,15 +567,15 @@ Ixy = Ixz = Iyz = 0  (for symmetric boxes)
 **Z-axis along cylinder length:**
 
 ```
-Ixx = Iyy = (1/12) * m * (3*r² + h²)
-Izz = (1/2) * m * r²
+Ixx = Iyy = (1/12) * m * (3*rï¿½ + hï¿½)
+Izz = (1/2) * m * rï¿½
 Ixy = Ixz = Iyz = 0
 ```
 
 ### Sphere (radius r, mass m)
 
 ```
-Ixx = Iyy = Izz = (2/5) * m * r²
+Ixx = Iyy = Izz = (2/5) * m * rï¿½
 Ixy = Ixz = Iyz = 0
 ```
 
@@ -761,7 +761,7 @@ Extend the 2-link arm to add a wrist joint:
 
 Add a simple 2-finger gripper to the wrist:
 - Two prismatic joints (sliding fingers)
-- Each finger is a small box (0.08 × 0.02 × 0.01 m)
+- Each finger is a small box (0.08 ï¿½ 0.02 ï¿½ 0.01 m)
 - Slide range: 0 to 0.05 m (5cm)
 
 ### Exercise 3: Calculate Inertia
@@ -784,7 +784,7 @@ Verify with online calculator.
 - Visual geometry can be detailed, collision should be simple
 
 **Next steps:**
-- In **[Section 2: Humanoid Modeling](./humanoid-modeling)**, we'll build a complete 15-link humanoid robot from scratch
+- In **[Section 2: Humanoid Modeling](./humanoid-modeling.mdx)**, we'll build a complete 15-link humanoid robot from scratch
 - You'll learn symmetry patterns, mass distribution, and realistic joint limits
 
 ---

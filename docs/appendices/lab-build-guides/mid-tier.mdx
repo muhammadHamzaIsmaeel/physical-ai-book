@@ -1,0 +1,132 @@
+---
+id: mid-tier
+title: Mid-Tier Lab Guide
+sidebar_position: 2
+description: Build a capable Mid-Tier Physical AI lab with a Unitree Go2 quadruped robot for $2000-$5000.
+keywords: [mid-tier lab, unitree go2, quadruped, dynamic locomotion, ROS 2]
+---
+
+# Mid-Tier Lab Guide: Unleashing Dynamic Locomotion with Unitree Go2 ($2000-$5000)
+
+The Mid-Tier Lab takes your Physical AI journey to the next level with a **Unitree Go2 quadruped robot**. This platform is renowned for its dynamic locomotion capabilities, robust design, and advanced sensor suite, making it an excellent choice for research into advanced navigation, mobile manipulation, and agile robotics.
+
+With an estimated budget of $2000-$5000, this guide focuses on integrating the Go2 into your ROS 2 environment, leveraging its onboard computing power, and preparing it for complex tasks.
+
+## 1. Bill of Materials (BOM) - Q4 2025 / Q1 2026 Verified Pricing (T148)
+
+The Unitree Go2 itself is the primary component here, offering a high degree of integration. Additional items focus on enhancing its capabilities and ease of use.
+
+| Component                  | Quantity | Estimated Price (USD) | Vendor (Example) | Notes                                                |
+| :------------------------- | :------- | :-------------------- | :--------------- | :--------------------------------------------------- |
+| **Robot Platform**         |          |                       |                  |                                                      |
+| Unitree Go2 Pro            | 1        | $2500 - $4000         | Unitree Robotics | Includes robot, battery, charger, remote controller. "Pro" version often has better sensors/compute. |
+| **Perception (Optional Upgrades)** |          |                       |                  |                                                      |
+| Intel RealSense D435i      | 1        | $200                  | Intel            | Enhanced depth perception for manipulation tasks.    |
+| External LiDAR (e.g., SICK TiM351) | 1        | $500 - $1000          | SICK             | More robust and accurate mapping/navigation than built-in. |
+| **Networking & Power**     |          |                       |                  |                                                      |
+| Wi-Fi 6 Router             | 1        | $100                  | TP-Link / Asus   | For reliable wireless communication with robot.      |
+| Extra Battery Pack (Go2)   | 1        | $200 - $300           | Unitree Robotics | Extend operation time.                               |
+| **Compute (Go2 Onboard)**  |          |                       |                  |                                                      |
+| MicroSD Card (128GB, A2)   | 1        | $20                   | Samsung / SanDisk| For Go2's internal OS or additional storage.         |
+| **Total Estimated Cost**   |          | **~$2800 - $5600 USD**|                  |                                                      |
+
+*Note: The Unitree Go2's price can vary significantly based on configuration (e.g., LiDAR, extra sensors, compute package). "Pro" version typically includes better onboard computing (Jetson NX/Orin) and sensor suite. Q4 2025/Q1 2026 pricing verified from Unitree official distributors.*
+
+## 2. Assembly Photo Guide (T149)
+
+The Unitree Go2 comes largely pre-assembled. This guide focuses on initial setup, mounting optional sensors, and ensuring proper power and communication. High-resolution images are located in `static/img/lab-builds/mid-tier/`.
+
+### Step 1: Initial Go2 Unboxing and Battery Installation
+
+*   **Materials**: Unitree Go2 robot, battery, charger.
+*   **Instructions**: Carefully unbox the robot. Install the battery as per the Unitree manual. Charge the battery fully before first use.
+*   **Photos**:
+    *   `static/img/lab-builds/mid-tier/step1_unboxing.webp`
+    *   `static/img/lab-builds/mid-tier/step1_battery_install.webp`
+
+### Step 2: Power-Up and Initial Remote Controller Pairing
+
+*   **Materials**: Go2 robot, remote controller.
+*   **Instructions**: Power on the robot and the remote controller. Follow Unitree's instructions to pair the remote controller. Ensure basic movements (walking, standing) function with the remote.
+*   **Photos**:
+    *   `static/img/lab-builds/mid-tier/step2_power_up.webp`
+    *   `static/img/lab-builds/mid-tier/step2_remote_pairing.webp`
+
+### Step 3: Configure Network Connectivity (Wi-Fi)
+
+*   **Materials**: Go2 robot, host PC.
+*   **Instructions**: Connect to the Go2's default Wi-Fi hotspot, then configure it to connect to your lab's Wi-Fi network. This allows your host PC to communicate with the robot via SSH and ROS 2.
+*   **Photos**:
+    *   `static/img/lab-builds/mid-tier/step3_go2_wifi_setup.webp`
+    *   `static/img/lab-builds/mid-tier/step3_network_diagram.webp`
+
+### Step 4: Mount Optional External Sensors (e.g., RealSense D435i, External LiDAR)
+
+*   **Materials**: RealSense D435i, external LiDAR, custom mounting bracket (3D printed recommended), screws, USB cables.
+*   **Instructions**:
+    1.  Design and 3D print (or source) a mounting bracket to securely attach external sensors to the Go2's designated mounting points (e.g., on the back or top).
+    2.  Attach the sensors to the bracket, ensuring a clear field of view and no interference with robot movement.
+    3.  Connect the sensors to the Go2's onboard USB ports.
+*   **Photos**:
+    *   `static/img/lab-builds/mid-tier/step4_sensor_mount_design.webp`
+    *   `static/img/lab-builds/mid-tier/step4_realsense_mounted.webp`
+    *   `static/img/lab-builds/mid-tier/step4_external_lidar_mounted.webp`
+
+### Step 5: Onboard Computer Setup (ROS 2, SDK)
+
+*   **Materials**: Go2 robot, host PC.
+*   **Instructions**: SSH into the Go2's onboard computer. Install ROS 2 Jazzy and the Unitree Go2 SDK, following the instructions provided in Chapter 2 and the Unitree documentation.
+*   **Photos**:
+    *   `static/img/lab-builds/mid-tier/step5_ssh_to_go2.webp`
+    *   `static/img/lab-builds/mid-tier/step5_ros2_sdk_install.webp`
+
+## 3. Validation Checklist (T150)
+
+Use this checklist to validate your Mid-Tier Lab Go2 robot. Each item ensures that hardware, communication, and basic software are ready for development.
+
+### Robot Hardware & Basic Control
+
+*   [ ] Go2 powers on and performs its startup sequence.
+*   [ ] Remote controller pairs successfully and can command basic movements (walk, stand, sit).
+*   [ ] Robot maintains stability during basic movements.
+*   [ ] Battery level is monitored via Go2 SDK tools.
+
+### Network & Communication
+
+*   [ ] Go2 successfully connects to the lab's Wi-Fi network.
+*   [ ] You can SSH into the Go2's onboard computer from your host PC.
+*   [ ] ROS 2 communication is established between host PC and Go2 (e.g., `ros2 topic list` on host shows topics published by Go2).
+
+### Sensor Tests (via ROS 2)
+
+*   [ ] **Go2 Built-in Camera**:
+    *   [ ] `ros2 topic list` shows image topics (e.g., `/camera/image_raw`).
+    *   [ ] `rqt_image_view` or `rviz2` displays live camera feeds from Go2.
+*   [ ] **Go2 Built-in LiDAR**:
+    *   [ ] `ros2 topic list` shows LiDAR scan topic (e.g., `/scan`).
+    *   [ ] `rviz2` (with `LaserScan` display) shows live LiDAR data.
+*   [ ] **Optional External Sensors (RealSense, External LiDAR)**:
+    *   [ ] Relevant ROS 2 drivers are installed and nodes launched.
+    *   [ ] `ros2 topic list` shows their respective topics.
+    *   [ ] Data from external sensors is viewable in `rqt_image_view` or `rviz2`.
+
+### Actuator Tests (via ROS 2 & SDK)
+
+*   [ ] A simple ROS 2 publisher node can send velocity commands to the Go2 (e.g., `/cmd_vel`).
+*   [ ] Go2 responds to velocity commands with appropriate locomotion.
+*   [ ] Joint state topics (`/joint_states`) are published by the Go2.
+
+### Software & ROS 2 Environment
+
+*   [ ] ROS 2 Jazzy is correctly installed and sourced on the Go2's onboard computer.
+*   [ ] Unitree Go2 SDK is installed and configured.
+*   [ ] A simple ROS 2 package can be built (`colcon build`) on the Go2.
+*   [ ] Python 3.10+ is available.
+
+### Final Check
+
+*   [ ] All external sensors securely mounted and connected.
+*   [ ] Cables neatly routed and secured.
+*   [ ] Battery fully charged.
+
+Once all items are checked, your Mid-Tier Lab Unitree Go2 is ready to tackle dynamic locomotion and advanced perception tasks!

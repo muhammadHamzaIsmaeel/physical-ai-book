@@ -850,6 +850,61 @@ killall -9 isaac-sim
 
 ---
 
+## Phase 0 R4: Sim-to-Real Transfer Best Practices (2025)
+
+**Task**: T110 - Research sim-to-real best practices
+**Date**: 2025-12-09
+**Status**: ✅ Complete
+
+### Key Findings:
+
+#### 1. Sim-to-Real Challenges (The "Reality Gap")
+- **Sensor Noise/Bias**: Real-world sensors have noise, latency, and biases not perfectly replicated in simulation.
+- **Actuator Imperfections**: Real robot motors have friction, backlash, and limited bandwidth.
+- **Physics Discrepancies**: Inaccurate mass, friction coefficients, contact models, and gravity.
+- **Environment Complexity**: Real environments are complex, with varying lighting, textures, and object properties.
+- **Communication Latency**: Network delays between robot and control software.
+
+#### 2. Domain Randomization (DR) - T111
+**Purpose**: Train policies in simulation on a vast distribution of randomized environments, making the policy robust to variations encountered in the real world.
+
+**Checklist for Effective Domain Randomization**:
+- **Physics Parameters**: Randomize friction coefficients, restitution, mass, inertia, damping.
+- **Visuals**: Randomize textures, colors, lighting conditions (intensity, direction), camera intrinsics/extrinsics.
+- **Object Properties**: Randomize object shapes, sizes, positions, and materials.
+- **Sensor Noise**: Add realistic noise models (Gaussian, salt-and-pepper) to simulated sensor data (e.g., camera, LiDAR, proprioception).
+- **Robot Properties**: Randomize joint limits, motor strengths, and link dimensions (within manufacturing tolerances).
+
+**Best Practices for DR**:
+- **Broad Distribution**: Randomize parameters over a wide range to cover possible real-world scenarios.
+- **Curriculum Learning**: Gradually increase randomization complexity.
+- **Automated Logging**: Log randomized parameters and their impact on policy performance.
+
+#### 3. Reality Gap Quantification - T112
+**Purpose**: Measure the difference in performance between a policy trained in simulation and deployed on a real robot.
+
+**Metrics for Reality Gap**:
+- **Task Success Rate**: Percentage of tasks completed successfully in real vs. sim.
+- **Performance Degradation**: Percentage drop in key performance indicators (e.g., speed, accuracy, grasp success) from sim to real.
+- **Control Effort**: Higher control effort (e.g., motor currents, joint torques) in real world for same task.
+- **System Identification Mismatch**: Differences in identified physical parameters (e.g., inertia, friction) between sim and real.
+- **Sensor Data Divergence**: Statistical difference between real and simulated sensor readings (e.g., histogram matching).
+
+**Quantification Methods**:
+- **A/B Testing**: Deploy sim-trained policy on real robot; deploy same policy on sim robot with realistic noise models. Compare performance.
+- **Transfer Learning Metrics**: Use metrics from transfer learning literature (e.g., H-divergence, Maximum Mean Discrepancy) to compare state distributions.
+- **Feature Matching**: Compare distributions of extracted features (e.g., visual features, joint angles) between real and simulated data.
+
+### Recommendations:
+1. ✅ Emphasize Domain Randomization as the primary sim-to-real strategy.
+2. ✅ Provide a comprehensive DR checklist for Isaac Sim.
+3. ✅ Define clear metrics for quantifying the reality gap, focusing on task-specific performance degradation.
+
+### References:
+- NVIDIA Isaac Sim Domain Randomization: https://docs.omniverse.nvidia.com/isaacsim/latest/features/domain_randomization.html
+- OpenAI Robotics: Learning Dexterous Manipulation: https://openai.com/research/learning-dexterous-manipulation
+- Sim-to-Real via Domain Randomization: https://arxiv.org/abs/1710.06530
+
 ## Additional Research Notes
 
 ### Content Strategy

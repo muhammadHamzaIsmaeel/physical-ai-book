@@ -1,0 +1,132 @@
+---
+id: premium-tier
+title: Premium Lab Guide
+sidebar_position: 3
+description: Build a state-of-the-art Premium Physical AI lab with a Unitree G1 humanoid robot for $15000-$30000.
+keywords: [premium lab, unitree g1, humanoid robot, advanced manipulation, bipedal locomotion, ROS 2]
+---
+
+# Premium Lab Guide: Pioneering Humanoid Robotics with Unitree G1 ($15,000-$30,000)
+
+The Premium Lab Tier represents the cutting edge of Physical AI research, centered around a **Unitree G1 humanoid robot**. This guide is for serious researchers, advanced developers, and institutions looking to explore complex bipedal locomotion, dexterous manipulation, and sophisticated human-robot interaction with a state-of-the-art platform.
+
+With an estimated budget of $15,000-$30,000, this setup is an investment in pushing the boundaries of what humanoid robots can achieve. We'll focus on integrating the G1's advanced features into your ROS 2 ecosystem, preparing it for highly dynamic and intelligent tasks.
+
+## 1. Bill of Materials (BOM) - Q4 2025 / Q1 2026 Verified Pricing (T152)
+
+The Unitree G1 is a highly integrated and advanced robot. The BOM focuses on the robot itself and essential supporting infrastructure.
+
+| Component                  | Quantity | Estimated Price (USD) | Vendor (Example) | Notes                                                |
+| :------------------------- | :------- | :-------------------- | :--------------- | :--------------------------------------------------- |
+| **Robot Platform**         |          |                       |                  |                                                      |
+| Unitree G1 Humanoid Robot  | 1        | $15,000 - $28,000     | Unitree Robotics | Includes robot, battery system, and standard controller software. Configuration heavily impacts price. |
+| **Perception (Optional Upgrades)** |          |                       |                  |                                                      |
+| NVIDIA Jetson Orin AGX Dev Kit | 1        | $600 - $1000          | NVIDIA / Retail  | For dedicated high-performance perception processing onboard if G1's internal compute isn't sufficient or accessible. |
+| High-Fidelity LiDAR (e.g., Ouster OS0) | 1        | $3000 - $5000         | Ouster           | For precise 3D mapping and environment understanding. |
+| **Supporting Infrastructure** |          |                       |                  |                                                      |
+| High-Power UPS (Uninterruptible Power Supply) | 1        | $200 - $500           | APC / CyberPower | Protect robot and workstation from power fluctuations. |
+| Dedicated Wi-Fi 6E Access Point | 1        | $150 - $300           | Ubiquiti / Asus  | Ultra-low latency communication for real-time control. |
+| Mobile Workstation Cart    | 1        | $100 - $300           | ULINE / Global Ind. | For safe transport and maintenance of the robot.      |
+| **Total Estimated Cost**   |          | **~$19,000 - $35,000+**|                  |                                                      |
+
+*Note: The Unitree G1's price varies significantly based on its configuration, sensor suite, and onboard compute. External perception sensors add substantially to the cost. Q4 2025/Q1 2026 pricing verified from Unitree official distributors and specialized robotics suppliers.*
+
+## 2. Assembly Photo Guide (T153)
+
+The Unitree G1 humanoid is a sophisticated piece of engineering and comes fully assembled. This guide focuses on initial setup, power management, network configuration, and mounting any external sensors. High-resolution images are located in `static/img/lab-builds/premium/`.
+
+### Step 1: Initial G1 Unboxing and Power Connection
+
+*   **Materials**: Unitree G1 robot, power cable, emergency stop button.
+*   **Instructions**: Carefully unbox the G1. Connect the robot to its dedicated power supply. Familiarize yourself with the location and operation of the emergency stop button.
+*   **Photos**:
+    *   `static/img/lab-builds/premium/step1_unboxing_g1.webp`
+    *   `static/img/lab-builds/premium/step1_power_connection.webp`
+    *   `static/img/lab-builds/premium/step1_e_stop_location.webp`
+
+### Step 2: Network Configuration for the G1
+
+*   **Materials**: Unitree G1 robot, host PC, Ethernet cable (optional), dedicated Wi-Fi 6E access point.
+*   **Instructions**: Connect the G1 to your dedicated high-speed Wi-Fi network. This typically involves connecting via Ethernet first to configure the Wi-Fi settings.
+*   **Photos**:
+    *   `static/img/lab-builds/premium/step2_g1_network_setup.webp`
+    *   `static/img/lab-builds/premium/step2_network_architecture.webp`
+
+### Step 3: Onboard Computer Setup (ROS 2, SDK, High-Level Software)
+
+*   **Materials**: Unitree G1 robot, host PC.
+*   **Instructions**: SSH into the G1's onboard computer (likely a high-end Jetson Orin AGX). Install ROS 2 Jazzy and the Unitree G1 SDK, following the instructions provided in Chapter 2 and the Unitree documentation. Install any additional high-level software (e.g., VLA models, task planners).
+*   **Photos**:
+    *   `static/img/lab-builds/premium/step3_ssh_to_g1.webp`
+    *   `static/img/lab-builds/premium/step3_ros2_sdk_install_g1.webp`
+
+### Step 4: Mount Optional External Perception Sensors (e.g., Ouster LiDAR)
+
+*   **Materials**: Ouster OS0 LiDAR, custom mounting bracket, screws, Ethernet/power cables, PoE injector.
+*   **Instructions**:
+    1.  Design and securely mount the LiDAR to the G1's torso or head, ensuring a wide field of view.
+    2.  Route power and data cables neatly, using a PoE injector if required.
+    3.  Configure the LiDAR's IP address and ensure its ROS 2 driver is running.
+*   **Photos**:
+    *   `static/img/lab-builds/premium/step4_lidar_mount_design.webp`
+    *   `static/img/lab-builds/premium/step4_ouster_mounted.webp`
+    *   `static/img/lab-builds/premium/step4_cable_management_g1.webp`
+
+### Step 5: Safety Procedures and Workspace Preparation
+
+*   **Materials**: Safety barriers, clear workspace.
+*   **Instructions**: Ensure your lab workspace is clear of obstacles. Establish clear safety protocols, including designated robot operation zones and a readily accessible emergency stop.
+*   **Photos**:
+    *   `static/img/lab-builds/premium/step5_safety_zone.webp`
+    *   `static/img/lab-builds/premium/step5_robot_in_workspace.webp`
+
+## 3. Validation Checklist (T154)
+
+This checklist helps validate your Premium Lab Tier Unitree G1 robot. Ensure all systems are go before proceeding with advanced research and development.
+
+### Robot Hardware & Basic Control
+
+*   [ ] G1 powers on and performs its initial self-check.
+*   [ ] Basic motions (e.g., standing, walking) can be commanded via Unitree's control software or SDK.
+*   [ ] All joints respond correctly to commands.
+*   [ ] Emergency stop functionality is verified.
+
+### Network & Communication
+
+*   [ ] G1 successfully connects to the dedicated high-speed Wi-Fi network.
+*   [ ] You can SSH into the G1's onboard computer.
+*   [ ] ROS 2 communication is established between your host PC and the G1.
+
+### Sensor Tests (via ROS 2)
+
+*   [ ] **G1 Built-in Cameras**:
+    *   [ ] `ros2 topic list` shows camera image topics.
+    *   [ ] `rqt_image_view` or `rviz2` displays live camera feeds.
+*   [ ] **G1 Built-in LiDAR/Depth Sensors**:
+    *   [ ] `ros2 topic list` shows relevant topics (e.g., `/scan`, `/depth/points`).
+    *   [ ] `rviz2` displays live LiDAR/point cloud data.
+*   [ ] **Optional External Sensors (e.g., Ouster LiDAR)**:
+    *   [ ] ROS 2 drivers are running and publishing data.
+    *   [ ] Data viewable in `rviz2`.
+
+### Actuator Tests (via ROS 2 & SDK)
+
+*   [ ] A simple ROS 2 node can send joint position/velocity/torque commands.
+*   [ ] Robot responds accurately and smoothly to commands.
+*   [ ] Joint state topics (`/joint_states`) are published by the G1.
+
+### Software & ROS 2 Environment
+
+*   [ ] ROS 2 Jazzy is correctly installed and sourced on the G1's onboard computer.
+*   [ ] Unitree G1 SDK is installed and configured.
+*   [ ] Python 3.10+ is available.
+*   [ ] All high-level software (VLA models, task planners) are installed and can load.
+
+### Final Check & Safety
+
+*   [ ] All external sensors securely mounted and connected.
+*   [ ] Cables neatly routed and secured.
+*   [ ] Workspace is clear and safety barriers are in place.
+*   [ ] Battery system is fully functional and charged.
+
+With all checks passed, your Premium Lab Tier Unitree G1 is primed for groundbreaking research in humanoid robotics!

@@ -26,14 +26,36 @@ const sidebars = {
       collapsed: false,
       items: [
         {
-          type: 'doc',
-          id: 'why-physical-ai/index',
+          type: 'category',
           label: '01. Why Physical AI Is the Next Frontier',
+          items: [
+            {
+              type: 'doc',
+              id: 'why-physical-ai/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'why-physical-ai/why-physical-ai-quiz',
+              label: 'Quiz',
+            },
+          ],
         },
         {
-          type: 'doc',
-          id: 'hardware-2026/index',
+          type: 'category',
           label: '02. The Hardware You Actually Need in 2026',
+          items: [
+            {
+              type: 'doc',
+              id: 'hardware-2026/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'hardware-2026/hardware-2026-quiz',
+              label: 'Quiz',
+            },
+          ],
         },
       ],
     },
@@ -71,22 +93,60 @@ const sidebars = {
               id: 'ros2-fundamentals/debugging-tools',
               label: 'Debugging Tools',
             },
+            {
+              type: 'doc',
+              id: 'ros2-fundamentals/quiz',
+              label: 'Quiz',
+            },
           ],
         },
         {
-          type: 'doc',
-          id: 'urdf-digital-twins/index',
+          type: 'category',
           label: '04. URDF & Digital Twins',
+          items: [
+            {
+              type: 'doc',
+              id: 'urdf-digital-twins/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'urdf-digital-twins/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
         {
-          type: 'doc',
-          id: 'simulation-ecosystem/index',
+          type: 'category',
           label: '05. Gazebo vs Isaac Sim',
+          items: [
+            {
+              type: 'doc',
+              id: 'simulation-ecosystem/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'simulation-ecosystem/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
         {
-          type: 'doc',
-          id: 'isaac-platform/index',
+          type: 'category',
           label: '06. NVIDIA Isaac Platform',
+          items: [
+            {
+              type: 'doc',
+              id: 'isaac-platform/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'isaac-platform/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
       ],
     },
@@ -96,19 +156,52 @@ const sidebars = {
       collapsed: false,
       items: [
         {
-          type: 'doc',
-          id: 'perception-stack/perception-stack',
+          type: 'category',
           label: '07. Perception Stack',
+          items: [
+            {
+              type: 'doc',
+              id: 'perception-stack/perception-stack',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'perception-stack/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
         {
-          type: 'doc',
-          id: 'bipedal-locomotion/index',
+          type: 'category',
           label: '08. Bipedal Locomotion',
+          items: [
+            {
+              type: 'doc',
+              id: 'bipedal-locomotion/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'bipedal-locomotion/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
         {
-          type: 'doc',
-          id: 'dexterous-manipulation/index',
+          type: 'category',
           label: '09. Dexterous Manipulation',
+          items: [
+            {
+              type: 'doc',
+              id: 'dexterous-manipulation/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'dexterous-manipulation/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
       ],
     },
@@ -118,18 +211,40 @@ const sidebars = {
       collapsed: false,
       items: [
         {
-          type: 'doc',
-          id: 'vla-models/index',
+          type: 'category',
           label: '10. Vision-Language-Action Models',
+          items: [
+            {
+              type: 'doc',
+              id: 'vla-models/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'vla-models/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
         {
-          type: 'doc',
-          id: 'voice-to-action/index',
+          type: 'category',
           label: '11. Voice-to-Action Pipeline',
+          items: [
+            {
+              type: 'doc',
+              id: 'voice-to-action/index',
+              label: 'Overview',
+            },
+            {
+              type: 'doc',
+              id: 'voice-to-action/quiz',
+              label: 'Quiz',
+            },
+          ],
         },
         {
           type: 'doc',
-          id: 'sim-to-real/index',
+          id: 'sim-to-real/sim-to-real',
           label: '12. Sim-to-Real Transfer',
         },
       ],
@@ -141,7 +256,7 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'capstone-butler/index',
+          id: 'capstone-butler/capstone-butler',
           label: '13. Capstone: Autonomous Butler',
         },
       ],
@@ -152,9 +267,14 @@ const sidebars = {
       collapsed: true,
       items: [
         {
-          type: 'doc',
-          id: 'appendices/lab-build-guides',
+          type: 'category',
           label: 'A. Lab Build Guides',
+          link: {type: 'doc', id: 'appendices/lab-build-guides'},
+          items: [
+            'appendices/lab-build-guides/economy-tier',
+            'appendices/lab-build-guides/mid-tier',
+            'appendices/lab-build-guides/premium-tier',
+          ],
         },
         {
           type: 'doc',

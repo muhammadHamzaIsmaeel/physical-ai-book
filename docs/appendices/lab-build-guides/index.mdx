@@ -1,0 +1,52 @@
+---
+id: lab-build-guides
+title: Lab Build Guides
+sidebar_position: 1
+description: Comprehensive guides for building Economy, Mid, and Premium Physical AI Labs, including BOMs and assembly instructions.
+keywords: [lab build, hardware, economy tier, mid tier, premium tier, BOM, assembly, jetson, unitree]
+---
+
+# Appendix A: Physical AI Lab Build Guides
+
+## Introduction
+
+Building your own Physical AI lab can be an incredibly rewarding experience, bringing your robotic projects from simulation into the tangible world. This appendix provides comprehensive build guides for three distinct tiers of Physical AI labs: Economy, Mid-Tier, and Premium. Each tier is designed to balance budget constraints with desired capabilities, allowing you to choose the setup that best fits your goals and resources.
+
+Whether you're a student, a hobbyist, or a professional researcher, these guides will walk you through the process of selecting components, assembling hardware, and validating your setup. Each tier includes a Bill of Materials (BOM) with verified Q4 2025/Q1 2026 pricing, detailed assembly instructions (often with photo guides), and a validation checklist to ensure all sensors, actuators, and communication channels are functioning correctly.
+
+## Three Lab Tier Comparison: Budget vs. Capabilities
+
+Before diving into the specific guides, it's crucial to understand the trade-offs between cost and capabilities for each tier. Your choice should align with the complexity of the robotic tasks you intend to perform and your budget.
+
+| Feature / Tier       | **Economy Tier**                                   | **Mid-Tier Lab**                                     | **Premium Lab**                                                                         |
+| :------------------- | :------------------------------------------------- | :--------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| **Primary Platform** | Custom Jetson-based Mobile Robot                   | Unitree Go2 Quadruped Robot                          | Unitree G1 Humanoid Robot (or similar)                                                  |
+| **Estimated Budget** | **< $1,000 USD**                                   | **$2,000 - $5,000 USD**                              | **$15,000 - $30,000 USD**                                                               |
+| **Core Capabilities**| Basic Navigation, Simple Grasping, Edge AI         | Dynamic Locomotion, Advanced Navigation, Perception  | Bipedal Locomotion, Dexterous Manipulation, Humanoid Interaction, Whole-Body Control    |
+| **Compute Board**    | NVIDIA Jetson Nano/Orin Nano (with carrier board) | Unitree Go2 Onboard Computer (Jeston NX/Orin)        | Unitree G1 Onboard Computer (High-end Jetson Orin AGX)                                  |
+| **Sensors**          | Stereo Camera, Basic LiDAR, IMU                    | Lidar, Depth Camera, Force Sensors, IMU, GPS         | High-Res Stereo/RGB-D Cameras, LiDAR, Force-Torque Sensors, Joint Encoders, IMU, Mic/Speakers |
+| **Actuators**        | DC Motors (differential drive), Small Servos       | 12 High-Performance Actuators (for legs)             | 40+ High-Performance Actuators (for legs, arms, hands, torso, head)                     |
+| **Primary Use Cases**| Introductory ROS 2 projects, small-scale automation | Research on quadruped gaits, outdoor navigation, mobile manipulation | Humanoid research, complex dexterous tasks, human-robot collaboration                   |
+| **Complexity**       | Low - Moderate                                     | Moderate - High                                      | Very High                                                                               |
+| **Maintenance**      | Low (DIY parts)                                    | Moderate (Unitree support, spare parts)              | High (Specialized parts, expert support)                                                |
+
+### Decision Framework: Choosing Your Lab Tier
+
+Consider the following questions when deciding which tier is right for you:
+
+1.  **What are your primary learning or research goals?**
+    *   *Basic ROS 2/AI integration?* -> Economy Tier
+    *   *Quadruped locomotion, dynamic outdoor navigation?* -> Mid-Tier Lab
+    *   *Humanoid control, advanced manipulation, HRI?* -> Premium Lab
+2.  **What is your budget?** Be realistic about component costs, shipping, and potential customs duties.
+3.  **What is your experience level with hardware assembly and electronics?** Economy tier requires more DIY.
+4.  **Do you need to work with highly dynamic movements or complex object interactions?** These often require Mid or Premium tiers.
+5.  **How much time are you willing to dedicate to assembly and troubleshooting?** Higher tiers generally demand more time.
+
+## Build Guides
+
+Each of the following sections provides a detailed build guide for its respective tier. We strongly recommend reading through the entire guide before purchasing components or beginning assembly.
+
+*   [Economy Lab Tier Guide](./economy-tier.mdx)
+*   [Mid-Tier Lab Guide](./mid-tier.mdx)
+*   [Premium Lab Guide](./premium-tier.mdx)

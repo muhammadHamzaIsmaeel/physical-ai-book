@@ -23,7 +23,7 @@ const config = {
   projectName: 'physical-ai-book', // Usually your repo name.
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -35,6 +35,9 @@ const config = {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
 
   themes: ['@docusaurus/theme-mermaid'],
@@ -68,17 +71,52 @@ const config = {
           alt: 'Physical AI Logo',
           src: 'img/logo.png',
         },
+        hideOnScroll: false,
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Book',
+            label: '📚 Book',
+          },
+          {
+            type: 'dropdown',
+            label: '🔗 Resources',
+            position: 'left',
+            items: [
+              {
+                label: 'Code Examples',
+                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/tree/main/code-examples',
+              },
+              {
+                label: 'GitHub Repository',
+                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book',
+              },
+            ],
           },
           {
             href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-social-link header-github-link',
+            'aria-label': 'GitHub repository',
+          },
+          {
+            href: 'https://x.com/m_hamza_ismail',
+            position: 'right',
+            className: 'header-social-link header-twitter-link',
+            'aria-label': 'Follow on Twitter',
+          },
+          {
+            href: 'https://www.linkedin.com/in/muhammadhamzaismail',
+            position: 'right',
+            className: 'header-social-link header-linkedin-link',
+            'aria-label': 'Connect on LinkedIn',
+          },
+          {
+            href: 'mailto:m.hamzashaikh6067@gmail.com',
+            position: 'right',
+            className: 'header-social-link header-email-link',
+            'aria-label': 'Send email',
           },
         ],
       },

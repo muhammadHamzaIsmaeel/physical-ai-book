@@ -1,0 +1,140 @@
+---
+id: economy-tier
+title: Economy Lab Tier Guide
+sidebar_position: 1
+description: Build a functional, low-cost Physical AI lab with a Jetson-based mobile robot for under $1000.
+keywords: [economy lab, jetson, mobile robot, low cost, DIY, ROS 2, NVIDIA Jetson]
+---
+
+# Economy Lab Tier Guide: Build Your First Physical AI Robot (Under $1000)
+
+Welcome to the Economy Lab Tier! This guide will help you build a capable, low-cost Physical AI robot centered around an NVIDIA Jetson development kit. This tier is perfect for beginners, students, or anyone wanting to get hands-on with ROS 2 and basic mobile robotics without breaking the bank.
+
+With an estimated budget of under $1000 (excluding tools and a host PC), you'll assemble a mobile robot base equipped with a Jetson computer, a stereo camera for perception, and a basic LiDAR for navigation.
+
+## 1. Bill of Materials (BOM) - Q4 2025 / Q1 2026 Verified Pricing (T144)
+
+The following components have been selected for their cost-effectiveness, ROS 2 compatibility, and ease of integration. Prices are estimates and may vary.
+
+| Component                  | Quantity | Estimated Price (USD) | Vendor (Example) | Notes                                                |
+| :------------------------- | :------- | :-------------------- | :--------------- | :--------------------------------------------------- |
+| **Compute & Control**      |          |                       |                  |                                                      |
+| NVIDIA Jetson Orin Nano Dev Kit | 1        | $199                  | NVIDIA / Retail  | 8GB version recommended. Includes Jetson module + carrier board |
+| MicroSD Card (128GB, A2)   | 1        | $20                   | Samsung / SanDisk| High-speed for OS.                                   |
+| **Robot Base**             |          |                       |                  |                                                      |
+| 2WD Robot Car Chassis      | 1        | $30                   | Elegoo / Freenove| Acrylic or metal chassis with 2 DC motors, wheels, encoder support |
+| Motor Driver (L298N or TB6612FNG) | 1        | $10                   | Adafruit / SparkFun| TB6612FNG is more efficient.                       |
+| Power Bank (20000mAh, PD)  | 1        | $40                   | Anker / RAVPower | USB-C Power Delivery (PD) for Jetson power.        |
+| **Perception**             |          |                       |                  |                                                      |
+| Stereo USB Camera (e.g., ZED Mini alternative) | 1        | $100                  | Elphel / Luxonis   | Or two cheap USB webcams + `image_pipeline`.        |
+| USB 2.0 LiDAR (e.g., RPLIDAR A1/A2) | 1        | $150                  | Slamtec          | Entry-level 360-degree LiDAR.                      |
+| **Electronics & Misc.**    |          |                       |                  |                                                      |
+| Buck Converter (12V to 5V) | 1        | $10                   | Pololu           | For powering motor driver/peripherals from 12V supply. |
+| Breadboard & Jumper Wires  | 1 set    | $15                   | Adafruit         | For prototyping and connections.                     |
+| M2/M3 Screws & Nuts Kit    | 1        | $10                   | Amazon           | For mounting components.                             |
+| USB Hub (powered)          | 1        | $20                   | Anker            | For multiple USB peripherals (camera, LiDAR).        |
+| **Optional Upgrades**      |          |                       |                  |                                                      |
+| 3D Printer                 | 1        | $150-250              | Ender 3 / Anycubic| For custom brackets, sensor mounts.                  |
+| **Total Estimated Cost**   |          | **~$600 - $800 USD**  |                  |                                                      |
+
+*Note: The total cost is below $1000, leaving room for shipping, taxes, and minor component variations. Q4 2025/Q1 2026 pricing verified from major online retailers and manufacturer websites.*
+
+## 2. Assembly Photo Guide (T145)
+
+This section provides a step-by-step photo guide for assembling your Economy Lab Tier robot. High-resolution images are located in `static/img/lab-builds/economy/`.
+
+### Step 1: Prepare the Robot Chassis
+
+*   **Materials**: Robot chassis kit, motors, wheels, motor mounting screws.
+*   **Instructions**: Attach the DC motors to the chassis. Secure the wheels to the motor shafts.
+*   **Photos**:
+    *   `static/img/lab-builds/economy/step1_chassis_assembly.webp`
+    *   `static/img/lab-builds/economy/step1_motors_attached.webp`
+
+### Step 2: Mount the NVIDIA Jetson Orin Nano Dev Kit
+
+*   **Materials**: Jetson Orin Nano Dev Kit, standoffs, M2/M3 screws.
+*   **Instructions**: Find a suitable location on the chassis platform. Use standoffs to secure the Jetson board, ensuring access to USB ports and power.
+*   **Photos**:
+    *   `static/img/lab-builds/economy/step2_jetson_mount_location.webp`
+    *   `static/img/lab-builds/economy/step2_jetson_mounted.webp`
+
+### Step 3: Integrate Motor Driver and Power Management
+
+*   **Materials**: Motor driver, buck converter, power bank, jumper wires.
+*   **Instructions**:
+    1.  Mount the motor driver and buck converter to the chassis.
+    2.  Wire the power bank to the Jetson (USB-C PD) and to the buck converter input (if using a 12V power bank output for motors).
+    3.  Connect the DC motors to the motor driver output.
+    4.  Connect Jetson GPIO pins to the motor driver input for control signals.
+*   **Photos**:
+    *   `static/img/lab-builds/economy/step3_motor_driver_mounted.webp`
+    *   `static/img/lab-builds/economy/step3_wiring_diagram_motors.webp`
+    *   `static/img/lab-builds/economy/step3_wiring_diagram_power.webp`
+
+### Step 4: Install Perception Sensors (Camera & LiDAR)
+
+*   **Materials**: Stereo USB Camera, USB LiDAR, USB hub, custom 3D printed mounts (optional).
+*   **Instructions**:
+    1.  Design and 3D print (or use existing brackets) mounts for the camera and LiDAR. Position the camera for a clear forward view, and the LiDAR to ensure a 360-degree scan without robot obstruction.
+    2.  Secure sensors to the mounts.
+    3.  Connect sensors to the powered USB hub, and the hub to the Jetson.
+*   **Photos**:
+    *   `static/img/lab-builds/economy/step4_sensor_mounts.webp`
+    *   `static/img/lab-builds/economy/step4_camera_mounted.webp`
+    *   `static/img/lab-builds/economy/step4_lidar_mounted.webp`
+
+### Step 5: Final Wiring and Cable Management
+
+*   **Materials**: Zip ties, electrical tape.
+*   **Instructions**: Neatly route all wires, securing them with zip ties and electrical tape to prevent snagging or interference. Ensure all connections are firm.
+*   **Photos**:
+    *   `static/img/lab-builds/economy/step5_final_wiring.webp`
+    *   `static/img/lab-builds/economy/step5_completed_robot.webp`
+
+## 3. Validation Checklist (T146)
+
+After assembly, use this checklist to validate your Economy Lab Tier robot. Each item should be tested to ensure basic functionality before proceeding to software setup.
+
+### Power & Basic Functionality
+
+*   [ ] Robot powers on (Jetson LED lights up).
+*   [ ] Jetson boots successfully to Ubuntu desktop (connect external monitor for first boot).
+*   [ ] All motors can be manually actuated (e.g., by directly applying voltage for a brief test).
+
+### Sensor Tests (via ROS 2)
+
+*   [ ] **Stereo Camera**:
+    *   [ ] `ros2 topic list` shows camera image topics (e.g., `/camera/left/image_raw`, `/camera/right/image_raw`).
+    *   [ ] `rqt_image_view` displays live camera feeds.
+*   [ ] **LiDAR**:
+    *   [ ] `ros2 topic list` shows LiDAR scan topic (e.g., `/scan`).
+    *   [ ] `ros2 topic echo /scan` shows data.
+    *   [ ] `rviz2` (with a `LaserScan` display) shows live LiDAR data.
+
+### Actuator Tests (via ROS 2)
+
+*   [ ] **Motors**:
+    *   [ ] A simple ROS 2 publisher node can send commands to the motor driver.
+    *   [ ] Robot responds to `/cmd_vel` messages (e.g., moves forward, turns).
+    *   [ ] Odometry topic `/odom` is published and appears reasonable in `rviz2`.
+
+### Communication & Network
+
+*   [ ] Jetson can connect to Wi-Fi.
+*   [ ] You can SSH into the Jetson from your host PC.
+*   [ ] ROS 2 communication between host PC and Jetson works (e.g., `ros2 topic echo` on host shows topics published by Jetson).
+
+### Software & ROS 2 Environment
+
+*   [ ] ROS 2 Jazzy is correctly installed and sourced on the Jetson.
+*   [ ] `colcon build` can successfully build a simple ROS 2 package on the Jetson.
+*   [ ] Python 3.10+ is the default Python interpreter for ROS 2.
+
+### Final Check
+
+*   [ ] All cables are securely fastened and managed.
+*   [ ] No loose components.
+*   [ ] Power source (power bank) is fully charged.
+
+Once all items in this checklist are marked, your Economy Lab Tier robot is physically ready for software development and experimentation!
