@@ -124,28 +124,32 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Content',
+            title: 'Learn',
             items: [
               {
                 label: 'Introduction',
                 to: '/docs/intro',
               },
               {
-                label: 'Why Physical AI',
-                to: '/docs/why-physical-ai',
+                label: 'All Chapters',
+                to: '/docs/intro',
               },
             ],
           },
           {
-            title: 'Resources',
+            title: 'Community',
             items: [
               {
-                label: 'GitHub Repository',
+                label: 'GitHub',
                 href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book',
               },
               {
-                label: 'Code Examples',
-                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/tree/main/code-examples',
+                label: 'Twitter / X',
+                href: 'https://x.com/m_hamza_ismail',
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/muhammadhamzaismail',
               },
             ],
           },
@@ -153,17 +157,37 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'License (MIT)',
-                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/blob/main/LICENSE',
+                label: 'Code Examples',
+                href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/tree/main/code-examples',
               },
               {
-                label: 'Content License (CC-BY-4.0)',
+                label: 'Content License',
                 href: 'https://github.com/muhammadHamzaIsmaeel/physical-ai-book/blob/main/LICENSE-CONTENT',
               },
             ],
           },
+          {
+            title: 'Writer',
+            items: [
+              {
+                label: 'Muhammad Hamza Ismaeel',
+                href: 'https://github.com/muhammadHamzaIsmaeel',
+              },
+              {
+                label: 'Contact',
+                href: 'mailto:m.hamzashaikh6067@gmail.com',
+              },
+            ],
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book. Code licensed under MIT, Content licensed under CC-BY-4.0.`,
+        logo: {
+          alt: 'Physical AI Book Logo',
+          src: 'img/logo.png',
+          href: 'https://muhammadhamzaismaeel.github.io/physical-ai-book/',
+          width: 160,
+          height: 51,
+        },
+        copyright: `Copyright © ${new Date().getFullYear()} Muhammad Hamza Ismaeel. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
