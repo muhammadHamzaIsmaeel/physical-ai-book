@@ -1,0 +1,21 @@
+{
+  "include": [
+    "backend/src",
+    "scripts"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    ".docusaurus",
+    "build",
+    "dist"
+  ],
+  "extraPaths": [
+    "backend/src"
+  ],
+  "pythonVersion": "3.11",
+  "pythonPlatform": "All",
+  "typeCheckingMode": "basic",
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false
+}

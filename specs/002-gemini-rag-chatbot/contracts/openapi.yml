@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: RAG Chatbot API
+  version: 1.0.0
+  description: |-
+    A minimal API for the Integrated RAG Chatbot. 
+    Provides a single endpoint to handle user chat interactions.
+
+paths:
+  /chat:
+    post:
+      summary: Send a message to the chatbot
+      description: |-
+        Receives a user's message, optional conversation history, and returns a streaming response from the RAG agent.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: The user's current message.
+                  example: "What is Isaac Sim?"
+                history:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: [user, assistant]
+                      content:
+                        type: string
+                  description: A list of previous messages in the conversation for context.
+                  example:
+                    - role: "user"
+                      content: "What are the main simulation platforms?"
+                    - role: "assistant"
+                      content: "The book discusses several, including Isaac Sim and Gazebo."
+      responses:
+        '200':
+          description: OK. A streaming response of Server-Sent Events (SSE).
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                description: |-
+                  A stream of events. Each event is a JSON object with a `content` key containing a token of the response. The stream is terminated by a final event with a `[DONE]` message.
+                  Example event:
+                  `data: {"content": "Isaac "}`
+                  `data: {"content": "Sim "}`
+                  `data: {"content": "is "}`
+                  `data: {"content": "a..."}`
+                  `data: [DONE]`
+        '422':
+          description: Validation Error. The request body is malformed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Validation Error: message is required"
+
+components:
+  schemas: {}
