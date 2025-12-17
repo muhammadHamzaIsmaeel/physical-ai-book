@@ -1,8 +1,20 @@
 # backend/src/core/qdrant.py
 from qdrant_client import QdrantClient
-from .config import qdrant_config
+from .config import get_cached_qdrant_config
 
-qdrant_client = QdrantClient(
-    url=qdrant_config["url"], 
-    api_key=qdrant_config["api_key"]
-)
+# Lazy initialization
+_qdrant_client = None
+
+def get_qdrant_client() -> QdrantClient:
+    """Get or create the cached Qdrant client."""
+    global _qdrant_client
+    if _qdrant_client is None:
+        config = get_cached_qdrant_config()
+        _qdrant_client = QdrantClient(
+            url=config["url"],
+            api_key=config["api_key"]
+        )
+    return _qdrant_client
+
+# For backward compatibility
+qdrant_client = None  # Will be initialized on first use

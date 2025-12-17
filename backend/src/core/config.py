@@ -40,6 +40,25 @@ def get_qdrant_config():
         "collection_name": collection_name
     }
 
-# Instantiate clients or configurations that can be imported elsewhere
-gemini_client = get_gemini_client()
-qdrant_config = get_qdrant_config()
+# Lazy initialization - clients will be created when first accessed
+# This prevents errors during module import in production
+_gemini_client = None
+_qdrant_config = None
+
+def get_cached_gemini_client() -> AsyncOpenAI:
+    """Get or create the cached Gemini client."""
+    global _gemini_client
+    if _gemini_client is None:
+        _gemini_client = get_gemini_client()
+    return _gemini_client
+
+def get_cached_qdrant_config() -> dict:
+    """Get or create the cached Qdrant config."""
+    global _qdrant_config
+    if _qdrant_config is None:
+        _qdrant_config = get_qdrant_config()
+    return _qdrant_config
+
+# For backward compatibility
+gemini_client = None  # Will be initialized on first use
+qdrant_config = None  # Will be initialized on first use

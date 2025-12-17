@@ -5,8 +5,8 @@ from openai import OpenAI
 from sqlmodel import select, Session
 from uuid import UUID
 
-from ..core.qdrant import qdrant_client
-from ..core.config import qdrant_config, gemini_client
+from ..core.qdrant import get_qdrant_client
+from ..core.config import get_cached_qdrant_config, get_cached_gemini_client
 from ..database.database import engine
 from ..database.models import DocumentChunkMetadata
 
@@ -41,6 +41,7 @@ async def retrieve_context(query: str, top_k: int = 5) -> List[Dict[str, Any]]:
         raise
 
     # Get collection name and validate it's not None
+    qdrant_config = get_cached_qdrant_config()
     collection_name = qdrant_config["collection_name"]
     if not collection_name:
         raise ValueError("QDRANT_COLLECTION_NAME is not set")
@@ -50,6 +51,7 @@ async def retrieve_context(query: str, top_k: int = 5) -> List[Dict[str, Any]]:
 
     # 2. Query Qdrant for similar vectors to get their IDs
     search_results: Any = None
+    qdrant_client = get_qdrant_client()
 
     try:
         # Try newer API first (query_points)
@@ -189,6 +191,7 @@ USER QUESTION:
 
     try:
         # Use gemini_client with proper parameters
+        gemini_client = get_cached_gemini_client()
         stream = await gemini_client.chat.completions.create(
             model="gemini-2.5-flash",
             messages=messages,  # type: ignore[arg-type]
