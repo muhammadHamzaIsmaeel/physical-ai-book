@@ -2,7 +2,7 @@
 from qdrant_client import QdrantClient
 from .config import get_cached_qdrant_config
 
-# Lazy initialization
+# Lazy initializatio
 _qdrant_client = None
 
 def get_qdrant_client() -> QdrantClient:
