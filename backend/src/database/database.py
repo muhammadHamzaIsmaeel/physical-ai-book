@@ -14,7 +14,22 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL not found in environment variables.")
 
-engine = create_engine(DATABASE_URL, echo=True)
+# Create engine with connection pooling for Neon Postgres
+engine = create_engine(
+    DATABASE_URL,
+    echo=True,
+    pool_pre_ping=True,  # Test connections before using them
+    pool_recycle=3600,   # Recycle connections after 1 hour
+    pool_size=5,         # Maximum number of connections in the pool
+    max_overflow=10,     # Maximum overflow connections
+    connect_args={
+        "connect_timeout": 10,
+        "keepalives": 1,
+        "keepalives_idle": 30,
+        "keepalives_interval": 10,
+        "keepalives_count": 5,
+    }
+)
 
 def get_session() -> Generator[Session, None, None]:
     """
