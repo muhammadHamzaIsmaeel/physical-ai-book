@@ -6,7 +6,7 @@ import './ChatWidget.css';
 
 // Backend API URL - change this after deploying backend to Render
 const API_BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://ai-book-chatbot-backend.onrender.com'  // Update this with your Render URL
+    ? 'https://physical-ai-book-chatbot-production.up.railway.app'  // Update this with your Render URL
     : 'http://localhost:8000';
 
 const ChatWidget = () => {
